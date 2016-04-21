@@ -1,0 +1,4 @@
+#!/usr/bin/env julia
+import SeqHax
+
+SeqHax.main()
