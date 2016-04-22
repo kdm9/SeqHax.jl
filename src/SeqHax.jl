@@ -14,18 +14,7 @@ function parse_cli()
             action = :command
     end
 
-    ## Length
-    @add_arg_table s["length"] begin
-        "--paired", "-p"
-            help = "Count in paired mode"
-            arg_type = Bool
-            default = false
-            required = false
-        "input"
-            help = "Input FASTQ read file(s) (may be gzipped)"
-            required = true
-            arg_type = ByteString
-    end
+    Length.add_args(s)
     return parse_args(s)
 end
 
