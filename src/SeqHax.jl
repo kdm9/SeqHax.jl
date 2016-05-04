@@ -5,6 +5,7 @@ using ArgParse
 
 include("utils.jl")
 include("length.jl")
+include("interleave.jl")
 
 function parse_cli()
     s = ArgParseSettings()
@@ -13,9 +14,12 @@ function parse_cli()
         "length"
             help = "Count read lengths"
             action = :command
+        "interleave"
+            help = "Count read lengths"
+            action = :command
     end
-
     Length.add_args(s)
+    Interleave.add_args(s)
     return parse_args(s)
 end
 
@@ -23,9 +27,11 @@ end
 function main()
     cli = parse_cli()
     cmd = cli["%COMMAND%"]
-    if cmd == "length"
-        return Length.main(cli["length"])
-    end
+    mainfuncs = Dict{AbstractString, Any}(
+        "length" => Length.main,
+        "interleave" => Interleave.main,
+    )
+    return mainfuncs[cmd](cli[cmd])
 end
 
 end # module SeqHax
