@@ -1,3 +1,4 @@
+__precompile__()
 module SeqHax
 
 using ArgParse
@@ -17,6 +18,7 @@ function parse_cli()
     Length.add_args(s)
     return parse_args(s)
 end
+
 
 function main()
     cli = parse_cli()
