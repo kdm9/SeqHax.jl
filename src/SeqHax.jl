@@ -15,12 +15,16 @@ function parse_cli()
         "length"
             help = "Count read lengths"
             action = :command
-        "interleave"
-            help = "Count read lengths"
+        "join"
+            help = "Join separate R1/R2 files into an interleaved file"
+            action = :command
+        "split"
+            help = "Split an interleaved file into separate R1/R2 files"
             action = :command
     end
     Length.add_args(s)
-    Interleave.add_args(s)
+    Interleave.add_join_args(s)
+    Interleave.add_split_args(s)
     return parse_args(s)
 end
 
@@ -30,7 +34,9 @@ function main()
     cmd = cli["%COMMAND%"]
     mainfuncs = Dict{AbstractString, Any}(
         "length" => Length.main,
-        "interleave" => Interleave.main,
+        "join" => Interleave.join_main,
+        "split" => Interleave.split_main,
+        #"preappend" => PreApp.main,
     )
     return mainfuncs[cmd](cli[cmd])
 end
