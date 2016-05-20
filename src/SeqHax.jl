@@ -3,6 +3,7 @@ module SeqHax
 
 using ArgParse
 
+include("ProgressLoggers.jl")
 include("utils.jl")
 include("length.jl")
 include("interleave.jl")
