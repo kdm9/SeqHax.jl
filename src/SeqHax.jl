@@ -5,6 +5,8 @@ using ArgParse
 
 include("ProgressLoggers.jl")
 include("utils.jl")
+include("fastx.jl")
+
 include("length.jl")
 include("interleave.jl")
 

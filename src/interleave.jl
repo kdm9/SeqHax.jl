@@ -2,6 +2,7 @@ __precompile__()
 module Interleave
 
 using SeqHax.Utils
+using SeqHax.Fastx
 using ArgParse
 
 function add_join_args(argparser)
