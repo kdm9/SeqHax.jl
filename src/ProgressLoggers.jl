@@ -61,7 +61,7 @@ function humanreadable(count::Real)
         unit = " Trillion"
         div =  1000000000000
     end
-    return @sprintf("%0.1f%s", count/div, unit)
+    return @sprintf("%0.0f%s", count/div, unit)
 end
 
 function flush!(log::ProgressLogger, item::Int, etc...)
@@ -69,8 +69,8 @@ function flush!(log::ProgressLogger, item::Int, etc...)
         elapsed = (time_ns() - log.starttime) / 1e9
         persec = humanreadable(item / elapsed)
         item = humanreadable(item)
-        println(log.sink, log.format, item, "$(log.noun)",
-                " ($(persec) $(log.noun) / sec)", etc...)
+        println(log.sink, log.format, item,
+                " $(log.noun) ($(persec) / sec)", etc...)
     end
     return 
 end
