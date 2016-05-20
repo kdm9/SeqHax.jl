@@ -134,7 +134,7 @@ end
 
 function foreach_seq(fn::Function, readfile::AbstractString;
                      interval::Int=100000)
-    log = ProgressLogger(interval)
+    log = ProgressLogger(interval, "sequences")
     nread = 0
     if readfile == "-"
         stream = BufferedInputStream(gzdopen(STDIN))
@@ -157,7 +157,7 @@ end
 
 function foreach_seqpair(fn::Function, readfile::AbstractString;
                          interval::Int=100000)
-    log = ProgressLogger(interval)
+    log = ProgressLogger(interval, "sequence pairs")
 
     npair = 0
     if readfile == "-"
@@ -189,7 +189,7 @@ end
 
 function foreach_seqpair(fn::Function, readfile1::AbstractString,
                          readfile2::AbstractString; interval::Int=100000)
-    log = ProgressLogger(interval)
+    log = ProgressLogger(interval, "sequence pairs")
     npair = 0
     stream1 = BufferedInputStream(gzopen(readfile1))
     stream2 = BufferedInputStream(gzopen(readfile2))
