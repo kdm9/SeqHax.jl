@@ -7,6 +7,7 @@ using Bio.Seq
 include("ProgressLoggers.jl")
 include("utils.jl")
 
+include("comp.jl")
 include("length.jl")
 include("interleave.jl")
 
@@ -14,6 +15,9 @@ function parse_cli()
     s = ArgParseSettings()
     ## Global
     @add_arg_table s begin
+        "comp"
+            help = "Calculate (mean) nucleotide composition of sequences"
+            action = :command
         "length"
             help = "Count read lengths"
             action = :command
@@ -24,6 +28,7 @@ function parse_cli()
             help = "Split an interleaved file into separate R1/R2 files"
             action = :command
     end
+    Comp.add_args(s)
     Length.add_args(s)
     Interleave.add_join_args(s)
     Interleave.add_split_args(s)
@@ -38,6 +43,7 @@ function main()
         "length" => Length.main,
         "join" => Interleave.join_main,
         "split" => Interleave.split_main,
+        "comp" => Comp.main,
         #"preappend" => PreApp.main,
     )
     return mainfuncs[cmd](cli[cmd])
