@@ -7,19 +7,19 @@ using ArgParse
 function add_join_args(argparser)
     add_common_args(argparser["join"])
     @add_arg_table argparser["join"] begin
-        "--r1"
+        "--r1", "-f"
             help = "R1 read file"
             required = true
             arg_type = ByteString
-        "--r2"
+        "--r2", "-r"
             help = "R1 read file"
             required = true
             arg_type = ByteString
-        "--il"
+        "--il", "-i"
             help = "Interleaved read file (default stdout)"
             arg_type = ByteString
             default = "-"
-        "--force", "-f"
+        "--force"
             help = "Force overwriting output file(s)"
             action = :store_true
         "--zip", "-z"
@@ -54,19 +54,19 @@ end
 function add_split_args(argparser)
     add_common_args(argparser["split"])
     @add_arg_table argparser["split"] begin
-        "--il"
+        "--il", "-i"
             help = "Interleaved read file"
             required = true
             arg_type = ByteString
-        "--r1"
+        "--r1", "-f"
             help = "R1 read file"
             required = true
             arg_type = ByteString
-        "--r2"
+        "--r2", "-r"
             help = "R1 read file"
             required = true
             arg_type = ByteString
-        "--force", "-f"
+        "--force"
             help = "Force overwriting output file(s)"
             action = :store_true
         "--zip", "-z"
