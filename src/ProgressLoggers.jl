@@ -55,10 +55,10 @@ function humanreadable(count::Real)
         unit = "M"
         div = 1000000
     elseif logc <= 12
-        unit = " Billion"
+        unit = "G"
         div = 1000000000
     else
-        unit = " Trillion"
+        unit = "T"
         div =  1000000000000
     end
     return @sprintf("%0.0f%s", count/div, unit)
@@ -72,7 +72,6 @@ function flush!(log::ProgressLogger, item::Int, etc...)
         println(log.sink, log.format, item,
                 " $(log.noun) ($(persec) / sec)", etc...)
     end
-    return 
 end
 
 function update!(log::ProgressLogger, item::Int, etc...)
