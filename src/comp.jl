@@ -34,7 +34,7 @@ function main(args)
                 end
             end
         end
-        println("Finished '$readfile'")
+        println(STDERR, "Finished '$readfile'")
     end
     println("cycle\tA\tC\tG\tT\tN")
     for (i, ctr) in enumerate(comp)
