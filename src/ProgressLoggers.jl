@@ -61,7 +61,7 @@ function humanreadable(count::Real)
         unit = "T"
         div =  1000000000000
     end
-    return @sprintf("%0.0f%s", count/div, unit)
+    return @sprintf("%0.2f%s", count/div, unit)
 end
 
 function flush!(log::ProgressLogger, item::Int, etc...)

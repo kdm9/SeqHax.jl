@@ -2,10 +2,10 @@ __precompile__()
 module SeqHax
 
 using ArgParse
+using Bio.Seq
 
 include("ProgressLoggers.jl")
 include("utils.jl")
-include("fastx.jl")
 
 include("length.jl")
 include("interleave.jl")
