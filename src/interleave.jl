@@ -10,14 +10,14 @@ function add_join_args(argparser)
         "--r1", "-f"
             help = "R1 read file"
             required = true
-            arg_type = ByteString
+            arg_type = String
         "--r2", "-r"
             help = "R1 read file"
             required = true
-            arg_type = ByteString
+            arg_type = String
         "--il", "-i"
             help = "Interleaved read file (default stdout)"
-            arg_type = ByteString
+            arg_type = String
             default = "-"
         "--force"
             help = "Force overwriting output file(s)"
@@ -57,15 +57,15 @@ function add_split_args(argparser)
         "--il", "-i"
             help = "Interleaved read file"
             required = true
-            arg_type = ByteString
+            arg_type = String
         "--r1", "-f"
             help = "R1 read file"
             required = true
-            arg_type = ByteString
+            arg_type = String
         "--r2", "-r"
             help = "R1 read file"
             required = true
-            arg_type = ByteString
+            arg_type = String
         "--force"
             help = "Force overwriting output file(s)"
             action = :store_true

@@ -16,13 +16,13 @@ function parse_cli()
     ## Global
     @add_arg_table s begin
         "comp"
-            help = "Calculate (mean) nucleotide composition of sequences"
-            action = :command
-        "length"
-            help = "Count read lengths"
+            help = "Calculate nucleotide composition of sequences"
             action = :command
         "join"
             help = "Join separate R1/R2 files into an interleaved file"
+            action = :command
+        "length"
+            help = "Count read lengths"
             action = :command
         "split"
             help = "Split an interleaved file into separate R1/R2 files"
@@ -40,11 +40,11 @@ function main()
     cli = parse_cli()
     cmd = cli["%COMMAND%"]
     mainfuncs = Dict{AbstractString, Any}(
-        "length" => Length.main,
-        "join" => Interleave.join_main,
-        "split" => Interleave.split_main,
         "comp" => Comp.main,
-        #"preappend" => PreApp.main,
+        "join" => Interleave.join_main,
+        "length" => Length.main,
+        "split" => Interleave.split_main,
+        "preappend" => PreApp.main,
     )
     return mainfuncs[cmd](cli[cmd])
 end

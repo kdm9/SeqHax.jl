@@ -13,7 +13,7 @@ function add_args(argparser)
             help = "Input FASTQ read file(s) (may be gzipped)"
             required = true
             nargs = '+'
-            arg_type = ByteString
+            arg_type = String
     end
 end
 
